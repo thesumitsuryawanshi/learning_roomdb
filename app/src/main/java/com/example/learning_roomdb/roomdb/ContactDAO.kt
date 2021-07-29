@@ -1,21 +1,18 @@
 package com.example.learning_roomdb.roomdb
 
 import androidx.lifecycle.LiveData
-import androidx.room.Dao
-import androidx.room.Insert
-import androidx.room.OnConflictStrategy
-import androidx.room.Query
+import androidx.room.*
 
 @Dao
 interface ContactDAO {
 
-    @Query("SELECT * FROM contact ORDER BY id ASC")
-    fun getAlphabetizedWords(): List<Contact>
+    @Query("SELECT * FROM contactTable ORDER BY id ASC")
+    fun getAllData(): LiveData<List<Contact>>
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(contact: Contact)
 
-    @Query("DELETE FROM contact ")
-    suspend fun deleteAll()
+    @Delete
+    suspend fun delete(contact: Contact)
 
 }

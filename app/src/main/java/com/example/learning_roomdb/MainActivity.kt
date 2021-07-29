@@ -1,30 +1,58 @@
 package com.example.learning_roomdb
 
 import android.os.Bundle
+import android.view.View
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.room.Room
-import androidx.room.RoomDatabase
-import com.example.learning_roomdb.roomdb.ContactDatabase
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.learning_roomdb.adapter.ContactRVAdapter
+import com.example.learning_roomdb.adapter.IContactRVAdapter
+import com.example.learning_roomdb.roomdb.Contact
+import com.example.learning_roomdb.roomdb.ContactViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(), IContactRVAdapter {
 
 
-    lateinit var database: RoomDatabase
-
+    private lateinit var viewModel: ContactViewModel
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        //generally one android project should have a single database
-        // and should use a singletone database pattern
-        //but for the practice instance will use a below pattern
+        contactRecyclerView.layoutManager = LinearLayoutManager(this)
+        val adapter = ContactRVAdapter(this, this)
+        contactRecyclerView.adapter = adapter
 
-        database =
-            Room.databaseBuilder(applicationContext, ContactDatabase::class.java, "ContactDatabase")
-                .build()
+        viewModel =
+            ViewModelProvider(
+                this,
+                ViewModelProvider.AndroidViewModelFactory.getInstance(application)
+            )
+                .get(ContactViewModel::class.java)
+
+        viewModel.allContact.observe(this, Observer { List ->
+            List?.let {
+                adapter.updateList(it)
+            }
+        })
 
 
-database.conta
+    }
+
+    override fun onContactClicked(contact: Contact) {
+        viewModel.deleteContact(contact)
+        Toast.makeText(this,"${contact.name} is deleted",Toast.LENGTH_SHORT ).show()
+
+    }
+
+    fun addData(view: View) {
+        val ipContact = inputContact.text.toString()
+        if (ipContact.isNotEmpty()) {
+            viewModel.addContact(Contact(ipContact))
+            Toast.makeText(this,"$ipContact is Inserted ",Toast.LENGTH_SHORT).show()
+        }
     }
 }

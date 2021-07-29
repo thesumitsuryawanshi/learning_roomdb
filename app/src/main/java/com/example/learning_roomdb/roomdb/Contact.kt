@@ -1,15 +1,13 @@
 package com.example.learning_roomdb.roomdb
 
+import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 
 
-@Entity(tableName = "contact")
-data class Contact(
-
+@Entity(tableName = "contactTable")
+data class Contact(@ColumnInfo(name = "Name") var name: String)
+{
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    val name: String,
-    val surname: String
-
-)
+    var id: Int? = null
+}
