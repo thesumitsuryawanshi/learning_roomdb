@@ -17,7 +17,7 @@
 
 
 ref : 
--   https://developer.android.com/codelabs/android-room-with-a-view-kotlin#6  (Official)  
+-   https://developer.android.com/codelabs/android-room-with-a-view-kotlin#6  (Official docs)  
 -   https://www.youtube.com/watch?v=yPL13Iwy6oM (no singletone pattern)
 
 ### follow below series for implementing Singletone pattern (Preffered) 
