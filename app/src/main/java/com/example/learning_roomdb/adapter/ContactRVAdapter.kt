@@ -19,15 +19,15 @@ class ContactRVAdapter(private val context: Context, private val listener: ICont
     inner class ViewHolder(itemview: View) : RecyclerView.ViewHolder(itemview) {
 
         val btndelete: ImageView = itemview.imageView
+        val btnedit: ImageView = itemview.btnEdit
         val textView: TextView = itemView.textView
-
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-        val view =
-            ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false))
+        val view = ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_contact, parent, false))
 
-        view.btndelete.setOnClickListener { listener.onContactClicked(allContact[view.adapterPosition]) }
+        view.btndelete.setOnClickListener { listener.onDeleteClicked(allContact[view.adapterPosition]) }
+        view.btnedit.setOnClickListener { listener.onEditClicked(allContact[view.adapterPosition]) }
         return view
     }
 
@@ -49,5 +49,6 @@ class ContactRVAdapter(private val context: Context, private val listener: ICont
 }
 
 interface IContactRVAdapter {
-    fun onContactClicked(contact: Contact)
+    fun onDeleteClicked(contact: Contact)
+    fun onEditClicked(contact: Contact)
 }

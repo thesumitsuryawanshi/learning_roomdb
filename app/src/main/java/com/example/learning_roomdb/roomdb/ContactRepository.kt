@@ -1,5 +1,6 @@
 package com.example.learning_roomdb.roomdb
 
+import android.util.Log.d
 import androidx.lifecycle.LiveData
 
 class ContactRepository(private val ContactDAO: ContactDAO) {
@@ -12,6 +13,11 @@ class ContactRepository(private val ContactDAO: ContactDAO) {
 
     suspend fun delete(contact: Contact) {
         ContactDAO.delete(contact)
+    }
+
+    suspend fun update(contact: Contact) {
+        ContactDAO.update(contact)
+            d(" CoantactDAO ","we are in the CoantactDAO where  name : $contact  ")
     }
 
 }

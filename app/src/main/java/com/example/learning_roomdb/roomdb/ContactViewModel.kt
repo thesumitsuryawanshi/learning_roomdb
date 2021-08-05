@@ -1,6 +1,7 @@
 package com.example.learning_roomdb.roomdb
 
 import android.app.Application
+import android.util.Log.d
 import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.viewModelScope
@@ -22,8 +23,15 @@ class ContactViewModel(application: Application) : AndroidViewModel(application)
         repository.delete(contact)
     }
 
-    fun addContact(contact: Contact)=viewModelScope.launch(Dispatchers.IO){
+    fun addContact(contact: Contact) = viewModelScope.launch(Dispatchers.IO) {
         repository.insert(contact)
     }
+
+    fun updateContact( contact: Contact) = viewModelScope.launch(Dispatchers.IO) {
+        repository.update( contact)
+        d(" viewmodel", "we are in the viewmodel where  name : $contact  ")
+
+    }
+
 }
 
