@@ -19,13 +19,15 @@
 ref : 
 -   https://developer.android.com/codelabs/android-room-with-a-view-kotlin#6  (Official docs)  
 -   https://www.youtube.com/watch?v=yPL13Iwy6oM (no singletone pattern)
+-   https://github.com/ravizworldz/RoomDbApp/tree/master/RoomDemoApp (new one)
 
 ### follow below series for implementing Singletone pattern (Preffered) 
 - Part 1 :  https://www.youtube.com/watch?v=2yD0FfvhglQ  
 - Part 2 : https://www.youtube.com/watch?v=Gig0hdBVJMY
 - Part 3 : https://www.youtube.com/watch?v=tu7ZiRozZNs
 
-# Ref : 
+
+# Project Ref : 
 ![image](https://user-images.githubusercontent.com/58788722/127478055-3b13ab74-e7d8-4575-87d9-e7f27867b8cf.png)
 ![image](https://user-images.githubusercontent.com/58788722/127478524-286bfb72-5ae9-4a01-ac8a-7b5643db4237.png)
 
