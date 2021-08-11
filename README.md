@@ -33,4 +33,6 @@ ref :
 ![image](https://user-images.githubusercontent.com/58788722/127478067-7a27eb10-7005-4c12-a07e-13f410206a8f.png)
 # Architecture Pic 2 :
 ![image](https://user-images.githubusercontent.com/58788722/127478079-2e8474a9-f19f-49aa-9bf6-f2b1785c96cb.png)
+![image](https://user-images.githubusercontent.com/58788722/128976771-493b587e-03a5-43b5-8b9d-cfd9f1140a32.png)
+
 
